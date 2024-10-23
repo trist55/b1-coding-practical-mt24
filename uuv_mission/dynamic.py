@@ -106,6 +106,7 @@ class ClosedLoop:
             reference_t = mission.reference[t]
             error_t = self.controller.calculate_error(reference_t, observation_t)
             actions[t] = self.controller.PD_controller(reference_t, observation_t, error_t_minus_1)
+            self.plant.transition(actions[t], disturbances[t])
             error_t_minus_1 = error_t
 
         return Trajectory(positions)
