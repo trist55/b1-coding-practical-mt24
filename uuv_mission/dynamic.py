@@ -76,10 +76,10 @@ class Mission:
 
     @classmethod
     def from_csv(cls, file_name: str):
-        mission_data = pd.read_csv("..\\data\\mission.csv")     # Outputs DataFrame
+        mission_data = pd.read_csv(file_name)     # Outputs DataFrame
         mission_np = pd.DataFrame(mission_data).to_numpy()
         reference, cave_height, cave_depth = np.split(mission_np,3,1)
-        pass
+        return cls(reference, cave_height, cave_depth)
 
 
 class ClosedLoop:
