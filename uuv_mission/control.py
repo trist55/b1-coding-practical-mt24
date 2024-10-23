@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import numpy as np
 
 class Controller:
     def __init__(self):
