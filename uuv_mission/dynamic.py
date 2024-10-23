@@ -78,10 +78,9 @@ class Mission:
     def from_csv(cls, file_name: str):
         mission_data = pd.read_csv(file_name)     # Outputs DataFrame
         mission_np = pd.DataFrame(mission_data).to_numpy()
-        reference_col, cave_height_col, cave_depth_col = np.split(mission_np,3,1)
-        reference = np.swapaxes(reference_col, 0, 1)
-        cave_height = np.swapaxes(cave_height_col, 0, 1)
-        cave_depth = np.swapaxes(cave_depth_col, 0, 1)
+        reference = mission_np.T[0]
+        cave_height = mission_np.T[1]
+        cave_depth = mission_np.T[2]
         return cls(reference, cave_height, cave_depth)
 
 
