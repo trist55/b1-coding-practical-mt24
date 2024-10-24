@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-
 class Controller:
     def __init__(self):
 
